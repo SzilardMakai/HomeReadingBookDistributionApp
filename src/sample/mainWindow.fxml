@@ -1,0 +1,79 @@
+<?import javafx.scene.control.*?>
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import javafx.scene.layout.*?>
+<BorderPane fx:id="mainBorderPane" fx:controller="sample.mainController.Controller"
+            xmlns:fx="http://javafx.com/fxml">
+    <top>
+        <VBox>
+            <MenuBar>
+                    <Menu text="Class">
+                        <MenuItem text="Add a new class..." onAction="#showCreateNewClassDialog"/>
+                        <MenuItem text="Edit the class..." onAction="#showEditClassDialog"/>
+                        <MenuItem text="Delete class" onAction="#deleteClassDialog"/>
+                        <SeparatorMenuItem/>
+                        <MenuItem text="Exit"/>
+                    </Menu>
+                    <Menu text="Students">
+                            <MenuItem text="Add a new student to the class" onAction="#showNewStudentDialog"/>
+                            <MenuItem text="Edit student information" onAction="#showEditStudentDialog"/>
+                            <MenuItem text="Remove student from the class" onAction="#removeStudentFromClass"/>
+                        <SeparatorMenuItem/>
+                            <MenuItem text="Generate reading list for selected class" onAction="#distributeBooks"/>
+                            <MenuItem text="Generate reading list for selected student"
+                                      onAction="#readingListGeneratorForSelectedStudent"/>
+                            <MenuItem text="PrintReadingList" onAction="#printReadingList"/>
+                    </Menu>
+                    <Menu text="Library">
+                            <MenuItem text="Add books to the library"/>
+                    </Menu>
+            </MenuBar>
+        </VBox>
+    </top>
+    <left>
+        <BorderPane>
+            <top>
+                <ToolBar>
+                    <Button text="Create new class" onAction="#showCreateNewClassDialog"/>
+                    <Button text="Edit selected class" onAction="#showEditClassDialog"/>
+                    <Button text="Remove class" onAction="#deleteClassDialog"/>
+                </ToolBar>
+
+            </top>
+            <center>
+                <ListView fx:id="classListListView" GridPane.columnIndex="0" GridPane.rowIndex="0"/>
+            </center>
+
+        </BorderPane>
+
+    </left>
+    <center>
+        <BorderPane>
+            <top>
+                <ToolBar>
+                    <Button text="Add student to the class" onAction="#showNewStudentDialog"/>
+                    <Button text="Edit selected student" onAction="#showEditStudentDialog"/>
+                    <Button text="Remove student from class" onAction="#removeStudentFromClass"/>
+                    <Button text="Generate reading list for selected class" onAction="#distributeBooks"/>
+                    <Button text="Generate reading list for selected student"
+                            onAction="#readingListGeneratorForSelectedStudent"/>
+                </ToolBar>
+
+            </top>
+            <center>
+                <TableView fx:id="studentListTableView">
+                    <columns>
+                        <TableColumn text="Name" prefWidth="120">
+                            <cellValueFactory>
+                                <PropertyValueFactory property="FullName"/>
+                            </cellValueFactory>
+                        </TableColumn>
+                        <TableColumn fx:id="booksToReadListTableColumn" text="Books to Read" prefWidth="Infinity"/>
+                    </columns>
+                </TableView>
+            </center>
+
+        </BorderPane>
+
+
+    </center>
+</BorderPane>
